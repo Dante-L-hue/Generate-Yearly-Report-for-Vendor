@@ -1,0 +1,374 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="workflow_basic_template" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="_dicConfig" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="_strWid" Type="InArgument(x:String)" />
+    <x:Property Name="_intTimerLow" Type="InArgument(x:Int32)" />
+    <x:Property Name="_boolChangeStatus" Type="OutArgument(x:Boolean)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1049,827</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_wf_template_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="62">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;-  Description of the function of this workflow. Add specific details and business logic if it exists.&#xA;&#xA;*** META ***&#xA;Created on:    202X-0X-XX  ; sisua.developer&#xA;Modified on:  202X-0X-XX ; sisua.developer" DisplayName="workflow_basic_template" sap:VirtualizedContainerService.HintSize="1222.6666666666667,2596.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:CurrentJobInfo" Name="jobInfo" />
+      <Variable x:TypeArguments="x:String" Name="strUrlUploadReportYearly" />
+      <Variable x:TypeArguments="x:String" Name="strUrlChangeStatus" />
+      <Variable x:TypeArguments="x:String" Name="strStatusCompleted" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <If Condition="[_dicConfig is Nothing]" DisplayName="if_test_wf_assign_args" sap:VirtualizedContainerService.HintSize="570,57.333333333333336" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence DisplayName="assign_test_arguments" sap:VirtualizedContainerService.HintSize="468,282" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="log_using_test_arguments" sap:VirtualizedContainerService.HintSize="434,57" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Warn" Message="[&quot;USING TEST ARGUMENTS!&quot;]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="inv_utils_read_config_dict.xaml" sap:VirtualizedContainerService.HintSize="434,57" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="wfs\_fmw\utils_read_config_dict.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="_dicConfiguration">[_dicConfig]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="_strConfigFile">configuration.xlsx</InArgument>
+              <InArgument x:TypeArguments="s:String[]" x:Key="_strarrConfigSheets">[New String(){"base"}]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+          <ui:MultipleAssign DisplayName="assign_wf_test_arguments" sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="MultipleAssign_15">
+            <ui:MultipleAssign.AssignOperations>
+              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4" />
+            </ui:MultipleAssign.AssignOperations>
+          </ui:MultipleAssign>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,89" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:GetCurrentJobInfo DisplayName="get_current_job_info" sap:VirtualizedContainerService.HintSize="570,57.333333333333336" sap2010:WorkflowViewState.IdRef="GetCurrentJobInfo_1" Result="[jobInfo]" />
+    <ui:LogMessage DisplayName="log_starting_wf" sap:VirtualizedContainerService.HintSize="570,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[String.Format(&quot;--- Starting: {0} ---&quot;, jobInfo.WorkflowName)]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:MultipleAssign DisplayName="assign_wf_config_parameters" sap:VirtualizedContainerService.HintSize="570,210.66666666666666" sap2010:WorkflowViewState.IdRef="MultipleAssign_16">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[strUrlUploadReportYearly]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[_dicConfig("URL_UPLOAD_REPORT_YEARLY").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[strUrlChangeStatus]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[_dicConfig("URL_CHANGE_STATUS_WORKITEM_BASE").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[strStatusCompleted]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[_dicConfig("STATUS_COMPLETED").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <Assign DisplayName="Assign_url_to_change_status_for_taxid" sap:VirtualizedContainerService.HintSize="570,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strUrlChangeStatus]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[string.Format(strUrlChangeStatus,_strWid)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="ua_change_status_workitem" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="570,1947.3333333333333" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" IsIncognito="True" OpenMode="Never" ScopeGuid="2a15ba0f-c004-45fb-b4b5-f14751b29042" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="536,1696" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="lm_change_status_page" sap:VirtualizedContainerService.HintSize="502,179.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;browser detected in change status&quot;]" />
+            <uix:NSelectItem DisplayName="select_completed_item" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="502,191.33333333333334" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="[strStatusCompleted]" ScopeIdentifier="2a15ba0f-c004-45fb-b4b5-f14751b29042" Version="V5">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="4">
+                  <x:String>---</x:String>
+                  <x:String>Open</x:String>
+                  <x:String>Rejected</x:String>
+                  <x:String>Completed</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="acme-test.uipath.com/work-items/update/108483727" CVScreenId="42a9f30c-7238-4beb-a76f-cb61ad99197a" CvElementArea="562, 463, 168, 29" CvType="InputBox" DesignTimeRectangle="564, 464, 165, 26" ElementType="Button" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='button' class='btn dropdown-toggle bs-placeholder btn-default' aaname='---' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='---' /&gt;" Guid="b4369cf8-f2d4-4683-9206-cea7a0616c1b" InformativeScreenshot="7cc93b083db2dffa9d06b22e68fc78aa.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="42a9f30c-7238-4beb-a76f-cb61ad99197a" CvTextArea="563, 445, 62, 13" CvTextArgument="New Status:" CvType="Text" DesignTimeRectangle="564, 445, 60, 15" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='New Status:' tag='LABEL' type='' class='' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='New Status:' /&gt;" Guid="5e7d9d70-a2b4-4c4e-9cea-ae39cb8b8ff4" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NSelectItem.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NSelectItem>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="click_update_status" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="502,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="2a15ba0f-c004-45fb-b4b5-f14751b29042" Version="V5">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="acme-test.uipath.com/work-items/update/108483725" CVScreenId="d68bfeff-f361-4e57-9b7d-41650f1cd985" CvElementArea="427, 519, 160, 37" CvTextArea="459, 530, 114, 16" CvTextArgument="Update Work Item" CvType="Button" DesignTimeRectangle="429, 520, 156, 34" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='buttonUpdate' tag='BUTTON' /&gt;" Guid="c47c88da-a197-4f0d-a6d0-073568df46a7" InformativeScreenshot="0637ef6656bae2ea98273a5d8bb77088.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="d68bfeff-f361-4e57-9b7d-41650f1cd985" CvElementArea="427, 469, 223, 36" CvType="InputBox" DesignTimeRectangle="429, 471, 220, 34" ElementType="Button" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='button' class='btn dropdown-toggle btn-default' aaname='Completed' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Completed' /&gt;" Guid="80ca1146-0b37-4405-a6dd-566a580803cb" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+              <uix:NClick.VerifyOptions>
+                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionOptions.Retry>
+                  <uix:VerifyExecutionOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionOptions.Timeout>
+                </uix:VerifyExecutionOptions>
+              </uix:NClick.VerifyOptions>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NClick>
+            <uix:NCheckState DisplayName="check_change_status" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="502,1033.3333333333333" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="2a15ba0f-c004-45fb-b4b5-f14751b29042" Timeout="[_intTimerLow]" Version="V5">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="468,576.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="lm_change_status" sap:VirtualizedContainerService.HintSize="434,179.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;The status has been successfully changed&quot;]" />
+                  <Assign DisplayName="Assign_change_estatus_true" sap:VirtualizedContainerService.HintSize="434,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[_boolChangeStatus]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="click_accept_change" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="434,220" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="2a15ba0f-c004-45fb-b4b5-f14751b29042" Version="V5">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="acme-test.uipath.com/work-items/update/108483727" CVScreenId="f76a600c-8539-47b7-9ca8-62363b62f5e4" CvElementArea="1086, 173, 92, 50" CvTextArea="1108, 192, 49, 15" CvTextArgument="Aceptar" CvType="Button" DesignTimeRectangle="1094, 179, 78, 38" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='acme-test.uipath.com dice' role='dialog' /&gt;&lt;ctrl name='Aceptar' role='push button' /&gt;" Guid="0bf98087-36c2-4e88-bafa-2f554a46754d" InformativeScreenshot="cca5657bfc3ca83eb4d14a2461ab958e.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='ACME System 1 - Google Chrome' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+                    </uix:NClick.Target>
+                    <uix:NClick.VerifyOptions>
+                      <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                        <uix:VerifyExecutionOptions.Retry>
+                          <InArgument x:TypeArguments="x:Boolean" />
+                        </uix:VerifyExecutionOptions.Retry>
+                        <uix:VerifyExecutionOptions.Timeout>
+                          <InArgument x:TypeArguments="x:Double" />
+                        </uix:VerifyExecutionOptions.Timeout>
+                      </uix:VerifyExecutionOptions>
+                    </uix:NClick.VerifyOptions>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="468,168" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign DisplayName="Assign_change_status_false" sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="Assign_3">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[_boolChangeStatus]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="acme-test.uipath.com/work-items/update/108483727" DesignTimeRectangle="737, 86, 462, 160" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='acme-test.uipath.com dice' role='dialog' /&gt;&lt;ctrl idx='2' role='pane' /&gt;" Guid="b95dbee7-74d4-4cc3-b920-2c291c2c058d" InformativeScreenshot="e21f78acc3d361494e8e306d5359db00.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='ACME System 1 - Google Chrome' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-11, -11, 2582, 1390" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="074e7655d203e12f16d30d727cdab8bb.jpg" Selector="&lt;html app='chrome.exe' title='ACME System 1' /&gt;" Url="[strUrlChangeStatus]" Version="V2" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+    <ui:LogMessage DisplayName="log_wf_finished" sap:VirtualizedContainerService.HintSize="570,48" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[String.Format(&quot;--- Finished: {0} ---&quot;, jobInfo.WorkflowName)]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+  </Sequence>
+</Activity>

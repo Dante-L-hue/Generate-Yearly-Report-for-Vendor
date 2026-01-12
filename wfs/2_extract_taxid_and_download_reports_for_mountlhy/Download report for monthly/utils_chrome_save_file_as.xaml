@@ -1,0 +1,523 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="chrome_save_file_as" this:chrome_save_file_as._intWaitingSeconds="15" this:chrome_save_file_as._intTimerLower="0" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="_strFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="_intWaitingSeconds" Type="InArgument(x:Int32)" />
+    <x:Property Name="_intTimerLower" Type="InArgument(x:Int32)" />
+    <x:Property Name="_strAcmePage" Type="InArgument(x:String)" />
+    <x:Property Name="_boolNormalFlow" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="_intTimerMid" Type="InArgument(x:Int32)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1101,3055</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>System_Chrome_saveFileAs_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="108">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.Exchange.Activities</x:String>
+      <x:String>UiPath.Mail.IMAP.Activities</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>UiPath.Mail.POP3.Activities</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Orchestrator.Client</x:String>
+      <x:String>UiPath.Orchestrator.Client.Models</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Services.RuntimeAnalyze</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="86">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OrchestratorClient</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Plugin.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION *** (Open Description!)&#xA;This workflow is responsible for handling the download and storage of the monthly report file.&#xA;&#xA;The flow first validates whether the monthly report is available by checking the presence of the required UI elements and system conditions. If the report is not available, the workflow sets a control flag (boolCanContinue = False) and safely stops the execution, avoiding unnecessary actions such as file creation or download validation.&#xA;&#xA;When the report is available, the workflow proceeds to:&#xA;&#xA;Open the browser “Save As” dialog.&#xA;&#xA;Define and validate the target file path.&#xA;&#xA;Ensure the parent directory exists (creating it if necessary).&#xA;&#xA;Save the report file to the defined location.&#xA;&#xA;Actively wait and verify that the file has been successfully downloaded.&#xA;&#xA;This approach ensures controlled execution, avoids invalid file operations, and maintains consistency with framework best practices by separating validation logic from execution logic.&#xA;&#xA;*** META ***&#xA;Created on :    Dante Libiot" DisplayName="chrome_save_file_as" sap:VirtualizedContainerService.HintSize="1446,4890.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_12">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:CurrentJobInfo" Name="jobInfo" />
+      <Variable x:TypeArguments="x:Boolean" Default="True" Name="BoolCanContinue" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <If Condition="[_strFilePath is Nothing]" DisplayName="if_test_wf_assign_test_args" sap:VirtualizedContainerService.HintSize="586,520" sap2010:WorkflowViewState.IdRef="If_6">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence DisplayName="assign_test_arguments" sap:VirtualizedContainerService.HintSize="512.6666666666666,257.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_14">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="log_using_test_arguments" sap:VirtualizedContainerService.HintSize="478.6666666666667,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Warn" Message="[&quot;USING TEST ARGUMENTS!&quot;]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
+          <ui:MultipleAssign DisplayName="assign_wf_test_arguments" sap:VirtualizedContainerService.HintSize="478.6666666666667,140" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <ui:MultipleAssign.AssignOperations>
+              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[_strFilePath]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">C:\DATA\_test\download.txt</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+              </scg:List>
+            </ui:MultipleAssign.AssignOperations>
+          </ui:MultipleAssign>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_26">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:GetCurrentJobInfo DisplayName="get_current_job_info" sap:VirtualizedContainerService.HintSize="586,57.333333333333336" sap2010:WorkflowViewState.IdRef="GetCurrentJobInfo_1" Result="[jobInfo]" />
+    <ui:LogMessage DisplayName="log_starting_wf" sap:VirtualizedContainerService.HintSize="586,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[String.Format(&quot;--- Starting: {0} ---&quot;, jobInfo.WorkflowName)]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:LogMessage DisplayName="log_file_path" sap:VirtualizedContainerService.HintSize="586,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;File path: &quot;+_strFilePath]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <uix:NCheckState DisplayName="check_app_state_save_as_window_open" EnableIfExists="False" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="586,1706.6666666666667" sap2010:WorkflowViewState.IdRef="NCheckState_2" Timeout="[)_intTimerMid]" Version="V4">
+      <uix:NCheckState.IfExists>
+        <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_24">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </uix:NCheckState.IfExists>
+      <uix:NCheckState.IfNotExists>
+        <Sequence DisplayName="if_window_not_appear(Assign BoolCanContinue)" sap:VirtualizedContainerService.HintSize="552,1324" sap2010:WorkflowViewState.IdRef="Sequence_25">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap2010:Annotation.AnnotationText="Monthly report window not found.&#xA;Flow cannot continue because no file will be generated,&#xA;therefore save verification step is skipped and not type file.&#xA;" DisplayName="assign_cannot_continue_no_monthly_report" sap:VirtualizedContainerService.HintSize="518,219.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[BoolCanContinue]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+            </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Assign>
+          <uix:NCheckState DisplayName="check_no_monthly_report_window" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="518,1044.6666666666667" sap2010:WorkflowViewState.IdRef="NCheckState_3" Timeout="[_intTimerMid]" Version="V5">
+            <uix:NCheckState.IfExists>
+              <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="484,587.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NApplicationCard AttachMode="ByInstance" DisplayName="ua_acme_page" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="450,527.3333333333334" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" InteractionMode="DebuggerApi" ScopeGuid="54911c1d-6d61-420e-84be-0b26023abab5" Version="V2">
+                  <uix:NApplicationCard.Body>
+                    <ActivityAction x:TypeArguments="x:Object">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,285.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="click_save_file" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,222.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="54911c1d-6d61-420e-84be-0b26023abab5" Version="V5">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="acme-test.uipath.com/reports/download" CVScreenId="81f618b0-45d9-464f-a49c-77dc4246b7dd" CvElementArea="1087, 193, 91, 50" CvTextArea="1109, 212, 48, 15" CvTextArgument="Aceptar" CvType="Button" DesignTimeRectangle="1094, 199, 78, 38" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='acme-test.uipath.com dice' role='dialog' /&gt;&lt;ctrl name='Aceptar' role='push button' /&gt;" Guid="66c51630-3e39-4760-a449-390ee0d5fd31" InformativeScreenshot="05013028f2b1c6fee1d4658062df41a5.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='ACME System 1 - Download Monthly Report - Google Chrome' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+                          </uix:NClick.Target>
+                          <uix:NClick.VerifyOptions>
+                            <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                              <uix:VerifyExecutionOptions.Retry>
+                                <InArgument x:TypeArguments="x:Boolean" />
+                              </uix:VerifyExecutionOptions.Retry>
+                              <uix:VerifyExecutionOptions.Timeout>
+                                <InArgument x:TypeArguments="x:Double" />
+                              </uix:VerifyExecutionOptions.Timeout>
+                            </uix:VerifyExecutionOptions>
+                          </uix:NClick.VerifyOptions>
+                        </uix:NClick>
+                      </Sequence>
+                    </ActivityAction>
+                  </uix:NApplicationCard.Body>
+                  <uix:NApplicationCard.TargetApp>
+                    <uix:TargetApp Area="-1928, 140, 1936, 1048" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAShSURBVFhHvdd7TFNXHAfw3wbr7NQ94hLnGImTbOJI/GeaZX9sYXMbM5mL8Q/3z2RGk4mbZhth5SVCebT1AmXjoZY9NAiCzJDoyPbHImAVevu6t71t54CWRxYqdEBFnCYE+C3nXm+53NBOsPWPb8gp9/T3yem55wGgYYZBw9wGDTP1iENqDgFoGAyljMS+0I567EIN6WegYYKhhtqGkG9GOGaJTfJJzAJCx9ecIIAp0DL8P9MueFsN3Pi+3Kv+jOwVRuyb1enPyDMKIW1Vlz9DS48dyOwYKYFSO0IxP9KTAoCIjltwT9vgDgM3DrlX/ZC9woh9szr9kGcUQtqqLj9o6THI7BgBxQkW4bgVQSsFFFvx3Wbv0VgDfnRObIkngCI5oMiKO1t9X0YLMDozv2lbras7tcVrkAIMzPirYQFpUQIg4vNxOgfCF0aEQ0Y81j16WQTozWPhAR/9sgBIrHPXKyknA2ob836rr1peSMzWn/4yQrHN+nSlk4srZQ6Svl0376bDwU6EKg7h624EHYsioMIcCA/YdXEBoCx33IUiG0K2Cbed7Q3IC4tJqHUj5JgQSmwIavuZ+wBI+uEGwpFrfNp8U+plA57RcyYosSPkmfHNxr4r8sJiNp3yzPLvtsaOz33HFUoAUNA5sieHDrzW5psKzYHTkebAIkAlZ5YAOuWFJYB58gwBrC53FskAkEMHYOzfucdEQL1jInYAhY4NATae9KCyxIZPUSwm1rmrREADNxllwGnPnAhQSkZgrd6J8K2JX4IVlIMSAU3u6ANCIyAFJNa5EQos/Ob2QrWrSAQ0RhuQFAbwEnk7CKDUjuu/XwHgWf0DA5b8CVYE+FgCWHXCYeF3rXwzbm/o65AXFpNc75nhAVp+r1c/FEC6Eq7VO91QbENQmXBHi/d3eWExiScXCq2udJY/FODt894Q4LPfhi/DNz0IWT34RlO/X15YTDzl5LdyyKaxmgkcFgEv1qwA8FbjAuCMZ/IQv5SSTSXfjL23Z16WF59H3Aq5NFmC+ddt6M7MBhGwvtq1fMB7LYsAoKxwIORahIcLrZh/7eb+cksgufnP4JacrhEVv1eUMghHruPrjX23hu7M8H0jjUBDJMCHku2YANr/nj4Mn14RzotkPmTTqKhwCu0sk3CGJEU+N2JwDj+QAhLJHCA/TZkdN1S7Cx9oBJYAwCftw3bI7EH4qlvoRHY+csAstCL5XKG24r4/RqjgHIIUAFoW4eh1fhJDKVMnApo9ywdA+8D09r1tA7+uoxy4hmIxXsdigp6bTr80eG743qxi+N4syAHvnO+/lVTjmt1s8GBqk1clAs5yETajCADY2zYA6ygHrKFYiNexkKDnIP3SIJDiYQCQVOOCzQYPpDZ5Q9vxKSYCIK3VFzqUxgrws2MiOSxgZ6tv1yMAwJPUUsfyAgvuvjhQduFGcGOVJZBSTi8ORQdSKulAis40yrcrl3jm/1LL/PMKRY/tjicTVG0NXUyEq1kZg3FaFldRDnxcyyIZpmjnCTL0GlZYO4TrIH81ExrkrkauS+T1IrpYRPxu2eW0nx8KDRPgo73/NxZZ/N2kZu9/PqMYP3lO0UYAAAAASUVORK5CYII=" InformativeScreenshot="2c4014606d4dc3c6093e185b110951a3.jpg" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Download Monthly Report' /&gt;" Url="[_strAcmePage]" Version="V2" />
+                  </uix:NApplicationCard.TargetApp>
+                </uix:NApplicationCard>
+              </Sequence>
+            </uix:NCheckState.IfExists>
+            <uix:NCheckState.IfNotExists>
+              <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,174.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Throw Exception="[new Exception(&quot;Not found save window &quot;)]" sap:VirtualizedContainerService.HintSize="416,114.66666666666667" sap2010:WorkflowViewState.IdRef="Throw_3" />
+              </Sequence>
+            </uix:NCheckState.IfNotExists>
+            <uix:NCheckState.Target>
+              <uix:TargetAnchorable DesignTimeRectangle="737, 86, 462, 180" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='acme-test.uipath.com dice' role='dialog' /&gt;&lt;ctrl idx='2' role='pane' /&gt;" Guid="13b48f04-b418-4906-9a6f-1548c31a7195" InformativeScreenshot="727dc23c0ba623055c6d900b5a0c622d.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='ACME System 1 - Download Monthly Report - Google Chrome' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+            </uix:NCheckState.Target>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </uix:NCheckState>
+        </Sequence>
+      </uix:NCheckState.IfNotExists>
+      <uix:NCheckState.Target>
+        <uix:TargetAnchorable DesignTimeRectangle="0, 0, 626, 900" ElementVisibilityArgument="Interactive" Guid="8e96d1cd-c23a-4c4c-950d-8c7805bd6161" InformativeScreenshot="827e967fc4e8296efd42cb46f5f784c1.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='Save As' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+      </uix:NCheckState.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NCheckState>
+    <If Condition="[BoolCanContinue]" DisplayName="if_exit_month_report" sap:VirtualizedContainerService.HintSize="586,2342.6666666666665" sap2010:WorkflowViewState.IdRef="If_7">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484,1795.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_30">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <uix:NApplicationCard AttachMode="ByInstance" DisplayName="use_app_chrome_save_as" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="450,1124.6666666666667" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="a04be482-c4ae-42f1-afba-12111b51e416" Version="V2">
+            <uix:NApplicationCard.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="download_file" sap:VirtualizedContainerService.HintSize="416,795.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="lm_type_PathFile" sap:VirtualizedContainerService.HintSize="382,179.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Trace" Message="[&quot;Type path file in window save: &quot; + _strFilePath]" />
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="type_file_name" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,254.66666666666666" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="HardwareEvents" ScopeIdentifier="a04be482-c4ae-42f1-afba-12111b51e416" Text="[_strFilePath]" Timeout="3" Version="V4">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable CVScreenId="ab20e382-7abc-40bf-a9c1-2bc4ddf251f4" DesignTimeRectangle="136, 740, 457, 17" ElementType="InputBox" ElementVisibilityArgument="Visible" FullSelectorArgument="&lt;wnd aaname='(File name:|Nombre de archivo:)' cls='ComboBox' matching:aaname='regex' /&gt;&lt;wnd ctrlid='1001' /&gt;" Guid="6cab4917-ba19-4aa2-8b74-633139faac10" InformativeScreenshot="4a01c7ca4607b582dee7c362276c52ab.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target CVScreenId="ab20e382-7abc-40bf-a9c1-2bc4ddf251f4" CvTextArea="73, 431, 55, 12" CvTextArgument="File name:" CvType="Text" DesignTimeRectangle="18, 737, 115, 23" ElementType="Text" FullSelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;ctrl name='Explorer Pane' role='pane' /&gt;&lt;ctrl name='Folder Layout Pane' role='pane' /&gt;&lt;ctrl name='Details Pane' role='pane' /&gt;&lt;ctrl name='File name:' role='text' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;&lt;ctrl name='Explorer Pane' role='pane' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl name='Folder Layout Pane' role='pane' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl name='Details Pane' role='pane' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl name='File name:' role='text' automationid='' matching:name='fuzzy' fuzzylevel:name='0.0' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' check:text='File name:' /&gt;" Guid="15ea3c5a-ad99-4f70-bc16-212252db3a6c" SearchSteps="Selector, FuzzySelector, CV" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NTypeInto>
+                  <ui:DeleteFileX DisplayName="delete_previous_file_if_exists" sap:VirtualizedContainerService.HintSize="382,114" sap2010:WorkflowViewState.IdRef="DeleteFileX_7" Path="[_strFilePath]" />
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="click_save" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="382,184.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="a04be482-c4ae-42f1-afba-12111b51e416" Timeout="3" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable CVScreenId="ab20e382-7abc-40bf-a9c1-2bc4ddf251f4" DesignTimeRectangle="404, 840, 88, 26" ElementType="Button" ElementVisibilityArgument="Visible" FullSelectorArgument="&lt;wnd ctrlid='1' title='*Save' /&gt;" Guid="09a0020f-7f99-4cae-86ad-31ff79bdc858" InformativeScreenshot="3172a54cb9fb7c9f57bf8afc352f737e.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </ActivityAction>
+            </uix:NApplicationCard.Body>
+            <uix:NApplicationCard.TargetApp>
+              <uix:TargetApp Area="-1454, 203, 626, 900" FilePath="C:\Program Files\Google\Chrome\Application\chrome.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAABDkSURBVGhDvZcJdFRVmscfqSSELCRkobJUJVWVSlWqUlWpJfu+kIWEQAAXXAhLuyF0I9CMCELwdDOiiAlr2BcVmVFZBEedEYhs7agoak8r2mhQtvYACUu3AlXc/5zvviWVEmn1OHPP+Z//9333vXq/7777Xl4E4VcYUcGqmDGJseP/YNK2bbSn7zhS5Og6Xurs+bYqB99W5eJ4mavn/UJb1w63ufMPGdq2uoSYZk1YqC4kJCTamGFqqamt3dlUX3dsZGHh5Tyt5rItLe2z2rr6HUlJiWODgoKiA6/3qwyCflCrnrrDaeqUQUX3iyvlXNTfKj1cn1flY0VTHbt/9Mgbo3M8cMXGQicIqBUE1AsCclRBmHjP3WgaOQp5ebnfq9XqdpVKpQ5k+EWDwGfqklv/Wprd/W2lh3GwCndfJ/BK0f1rpH1Dy9ld9fWojY3H2OhoTCnNw8xhQzBcHYNxsVGYIvRDU0gwpt93J0bdNhqlZaXweDywWCyXwsPDRwTy/KwxU5fU+ldla8gr2gvHa+VuJq/02XI3O1vu4vnpCg9euqMZk6dOxZ0FBZh/dy0++XA/vjn7FU6ePI7Pj+zG62sex8ykeBQJAsYMr0HT8CYUFOTD7XbDarUiLS2NRUREPC4IQr9AtlsO2q97c7KO0mpyEWCAy6DcKzw4W+GWRMd4sGfUUEyZMgWPTHsET82fjy8+OYD39ryIrU8+iofGNGLvq1vR9thETDRqMb2+BJ7MDNTU1iM/Lw9Olwt2ux1msxkpKSkIDQ2dEMj4o+MOdfy4L0qyexTACjcH6gX1h5VU7sYZUpmLnSlzskP15fjt5MmYPHkyxrW0YMrUR/Di6iW4zRGLafVGzFxUg6J70mBTCZj/8Bh8d2o/RjZWw+nyINfj4fAOhwNZWVnQ6XSIi4u7rlKpagJZfzB+n5bYKsPKYPLqEpzoTtHLxXkOX+ZkZ8pdkrsxo7wYI0eOxJ133InGxkbUNzag1GJEVV4GOl6egD+/0Yptmydhy7/cjmXT78K+dQvR0lQHt9MBm92GLKsVmZmZMJlMtI0QHx+PsLCwnYG8fcaM1MRW/9WVYcSVleIyF89Pl0rAFJe5uPhcmQv/U+KCx+NGdXU1ampqeCNFBQXIzy/E7s2L8N2RdTi2axE+37kYm/74MCZGh2NtvyBsCA5Fg04PPYEbjUhPT+erT1soISEBkZGRTBCEpEBuPu5Qx407w6H8toOUi6ASoOQitJMaEeOSbCb7qlw7fwBdTifKyspQUlKMmTOmYUhNDX73wAQsrszDqhUL8eo7b6LWasEcQcCR0DDsElSoS9ZAazLCoNdz+NTUVCQnJ/MGBg4cCJVK9VAgO39gPyu0d3PAUicjCAL1X1UR2imBin5KjnkTTpwqFTUqM4PRRWkLOJ1OeNwufH7sU3SfP4+Rt9+GbEHAow4btm17Dk2JCVjJGwjFFpUK2SnJ0JkyYODwWmi0GiQmJfEtFBMdQw/zm4H8wrv51q4+q0hAFEtA/s7jYgeTYRWVkLK5Z2cY+W2nLeByueB2uVCQn4s3Xv8P0FjesRzFgoAJDgfmTp6ExaHB2BESjGUhKqSmGhBryoQ2jRrQQK83QKfTIykxEbFxsRgwYMDFPvDTtepWZRUDwPsCEpyfqImA2knJs0wm3gA9fPQQOrOdMJvM0KelYumSZ3kT21/eipc2r8cNALMqyzFBEPCvkRFQZ+djYG4x4h1uaKw26KwOGLJdSNYbEBsbh4jwiKsKfGh8uG7RtIre1Sx2sJPFDrEBBag3pjnusors7FR9MS6t78DVD9+H98xpDkfvbrVazRug2GKxwGzO5J6SnIgH7puIJxcuwKzZs+DzenHlyhU82dICtyDAlGVHms0Jg8WKjKwspFuzoHPYodanIyFhMCKiInrvgO4h96ayTc34sCFXWb2+gBJwsUOSHGfj7G31HPpmo7CwkN8BgjcajVxmk4nn6ekGFOa6ET0wEoIgYGhdHS5duYRjx/+MEkMq0vV6GHVGGHQGWMwW2LOy4LDZkG4w8OcgKirqmLj6ceE694uj4HlxFCb9sVYB+6bIHgAt6htZhTbW0/4Ubly+3Af6TA/Dax9dw9rOq6gbfR8yMjL4A0x/jOiNRE3QM2HKyIDZbEKSWo2Q4BDeRGlNNT449g5e370RSUlJSNOLbx/6DbprJrOJv5HoOYiMjBT/FsSWpY53bhnBXFua4d4yEq/fni8B2hn3Ill2Dk3x14U2dnHdyj7gu49ew0Ob/o7c1ovIm3+Ju/PuVRyaPsjy8vL4dw2tvsFg4G8XjdGIeq0Ww4NCEBIaDE2QCnNL8/BwcwOSdWnQ69Kg0Wj4W4wap0aoeWquf//+4ms0c0HlUecLIxjBUyMtT9eLsBL01wUEbcfXsgrt6G5f6LfiN/DgRhE8Z/5F5M6/iByKWy/CPe0jpYHc3Fzk5ORAT+/1NB3SUlORZNDhN5HRmCz0Q1WQChNUwZgpCChXhfAGtBqN+BYzpvMG6FytVovExEQEBQXp+PbJfn44y35hBHO90AznC80gX/5gMfu6IIt9XWjjwBSfkPJTzbVM3jYE39R2WQEmeeb1ivLchkm8ARJ91xCIie5CugGWtBTMCA3FHf36YWy/INyvCsI0lQpNURGITUxCclISX23aRiR6GVBD991mRExEUIww0KMe4Xx+BAJVvH44/lJmZyfyCZyasIH8RL6VXXltp7L6D2y4As+8Hj9dhIdW3q+WM+MTFJdW8L/E+fn5KCoqQmlxMYpKS5BttaE5Ng6FEeFoDgvF/f1VmBjcD6MHRiJek8JXm6DlTwnaemaTASd3W9AyNHq8kHx3Vlv2c8MhagR3asDxXBNb+NtSBborPwtdBVk4NbJWgd919BoHvbnEJhRN2Iry8nL+PVRVVcW/jcoqK1FbnA2zORVxCWoUaZLRoEmGQ61G4qBo6LVpyJTeXvQM0Fa02WzYvtgK758ysfh3g9uF9FmFnY7Nw2Hf3MT8m7BvHsao/m6NExxe0oVnn1QaaFx8Ca65Pb2a5xffRLn3LENJSQlvpKKiHMUlVRhVm417CzQoiBkMp0GPWK0WOnUCqmMHoT4pEelmE4enNxBtv2WzrPAeNjPv4Uxse1KzU7A8U93l2NyEm8m+aRi7a0E168q1sK9yLawrz4rvP3iPwx8764Nzbg8XwcnxrdUN1wOvIa+oEgUFBfzDLsNsgducCWNKElxpaswcbcC9gwdjSEI8kuPjlJXPdVuwd6UZ3sMZjOQ7bMKXr+i7BNumRubY1ASSnWsYj6lOMdV2jXDxBr7Ksyrv/H2fXkf23G5Rj0s+t5uDiu5f86/3wDH9M7jqH0Z2djbsDjsyrRZo9Tpk6PXId+iQGD8I0YMHIz4uDlptMqbca8PJ3SZ4DxmZ91AGd99hI869oe8R7BuHwbaxkZH/mKqX1uOrnEz2pcfM5O3Tse97OB7vViTD9qndJObNSnHWA3tgaX4K1cNbUDNkCN8ipgw93FnxGF0ZzxZMSsLB1ToQrPeQgfkOpcN3yMhzHh82Qsja2MBsvAl/NcK2oZHHWRsamHVDA2v/TQG+9GQqDazc+10fWFn2W+SBc3KNfkseBNoLK8sg6nA6zcN7UM98hw08FizL63qsG4ayLALe0AiKybPWN/Cc6tb1Q1leRz0+LrbCe+YUv9DOD6/CPqcbtjkXuBMId/84wOVjbQHH7f30ukR/iUMRrPegjnkP6UESG9DzGncx5jXB+HRFF0GSLOuHMgV8fYMiqpNmTS3Gd0fe5dc63XODA4kS4W6uwLnA/AI+O+Pjv8kuvsOhfAd1HLBXqYxqvfVURjr+UkqXoJns3mFd1wCrBGtdN7RPbFlXz0i8vq4BR15Zo9zu8esuIWvOBWTN6Zb856v2mYvK79348gl4D6bBFyDvwVR4D2iZ9yApVcn3LFV3ColjrG0inAjLm5FyUubaOmbhXs9IY9pGKBfc8cE1WGdfgHWOpNkiFK/9E8nH7fjgqvJ7vvcKmfeghvk4ILmGoAmW56JLOqjF4inR7UJ0Ycp4guSga+tB4s2slSXWRIn5u2c+Vi46bu1lWGZfUERQltnnFVD/ub7HXMC4tZeU32HfviyDSkph3gPJTHQNfLxGuQa+g6KGl4SNEFQDgmM43Jp6mNfU8iYyeVzHyP1FNTqmeus4XL72d37hU903MOTpHmTOPs/BMx8TvTe+oNToGLk2ZFEPTvXQP5HA5at/h++9fIIVQfcn8Zjc5+9cydJ8EtOpVTr+Oa2dkduZuaZOAq2DeXUt4/lquSbWeS7VFvypQ1k9aqJl7SUO9wNJDfhr7NpL/Bx5XPziCQmK4BIZ14Ekqvnlicx3IAkkqn+wLv6o8u9kTHXqVPNqAhdlWlXDevPaPnU+t0qsLTvyvAJBY/uRq6h6qhumx87D/Nh5xWWNXXMR2/32PI1tH69HdydtDwXYT2rmO+Cfi/LtT8TYurBxSgNBYcExxrbKnoxVNYzEASVIcpMkmiP3r9GdoC3gPz477cNbf7mGpW/9A8v2/APbj3zfZ8VpXL56BQsOd+DlXRZ49w+mVSZgKVbDx2NZg+HbPxjetxMYieaU7SOP2GGGVhnK1FGLjI4hzNRRA65VtTBKuXHlEN4E5RnSfPkL97Btx/6zD+Ctxn+f/gjlz9/DyteVMYJT9HY841LyBC4JHt6346gBrH80amMfeBp0FwzPVHTLYBkra8Cdx0P65ASt5DQn5RXP34sFhzo44MnLf1OAKaba0veeg2dDs3juyiE48VYyBxLB4qmBvnEnxX3muFLVQX1XXx6DGg2tRgk2fWU1U8C5yxLz9BU0z++IElPduEIU1WQX5/1rVWzmi254345lvv0EFkugEvQgKSbF9vXOQWze+LDWQO4+Qzsr/6gMIUuGN66oluQ/H5j71+Tjq2FYXsXhKXZ3VODEfyXCJ0FxwE6CjIWPw1Iew3itcxC8bw/ifnzrwK8CeX8wgmPDdPpFZT3py6shiy7q7wQjeiWTwchFVfI5WYF5+vIqtL2UyQjIx8Fi2PXOaOblipFq0Yz8+r6BvEY6t3tgj+7Htk7giMpLHK9fVslI8kVFVSN9WZWo5VUwLKtC7zHiHOVKfZl4jP95JauLJaheODGOloCj4VU8inn3DeQ+ojikOZDzliN2qGE+Xfxm0i+tUCCV+tLKHxwnS7e0gtE5pJe2G0QwGbBzIK5LLsJGMu++KGpK1L4ozG3pPz+Q7yeNmKG6Vg62tFKCEJ0kg+mWVDDDUmqqkkuZl3LZSWPW53Agf/k6CbZvzbsvgvH6vkjMGxdy64f2n41wW3xz6sKSHt2SCgVEv6QSaUvKmW5JOaNYrumXVPA6iXI6xz8/8WYshyOwvoqAd184I7++dwDz7h3Azu0K72mpCx4fyPOLRvCgMJ1mXn4XB2wvZ7p2yZdUiJDt5SytvYzJc4qU+TI2fbNNhOOg4SBIDi7WRN87gBzvrwk7qlP3+2kP7M8Z0fVprTJYansZ07WXc9DUNopFl+O0NnGOVLyiACfeHESrLEoC9e4NU6C9e/uzc6+G9sxtCf5l+/2nDrobcXeZNxIoQfpLu7iUN6BtK+VzqW1lvL7233Uc0Ls3jKBF7emvxOdeDeme26JqjYnoFxN4vf+zQY1E5iaOT/q95yiBc+BnyxSJtTIULS8g+F4R+J5Q5t0Tij3PhnROGa2a+v8KfrNBzdDDHtNsaEuYZO9Mfjyvi5rQPFPC/u3lFJx7Nbjniy3BXa88EbzjmUmqtrF1/cb9WtD/C1BXJlWWuhyCAAAAAElFTkSuQmCC" Selector="&lt;wnd app='chrome.exe' cls='#32770' title='Save As' /&gt;" Version="V1" />
+            </uix:NApplicationCard.TargetApp>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </uix:NApplicationCard>
+          <ui:LogMessage DisplayName="log_downloading_file" sap:VirtualizedContainerService.HintSize="450,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Downloading file ...&quot;]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
+          <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="fe_iter_check_file_every_100ms_until_end_wait" sap:VirtualizedContainerService.HintSize="450,57.333333333333336" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Enumerable.Range(0, _intWaitingSeconds*10)]">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="iter" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="check_file_exists_wait" sap:VirtualizedContainerService.HintSize="484,660.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:PathExists Resource="{x:Null}" DisplayName="path_exists_file" Exists="[_boolNormalFlow]" sap:VirtualizedContainerService.HintSize="450,176" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[_strFilePath]" PathType="File">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:PathExists>
+                  <If Condition="[_boolNormalFlow]" DisplayName="if_file_exists" sap:VirtualizedContainerService.HintSize="450,310" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If.Then>
+                      <ui:Break DisplayName="break_wait_loop" sap:VirtualizedContainerService.HintSize="334,25.333333333333332" sap2010:WorkflowViewState.IdRef="Break_1" />
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                  <Delay DisplayName="delay_100ms" Duration="[TimeSpan.FromMilliseconds(100)]" sap:VirtualizedContainerService.HintSize="450,114.66666666666667" sap2010:WorkflowViewState.IdRef="Delay_4" />
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEach.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEach>
+          <If Condition="[_boolNormalFlow]" DisplayName="if_file_found" sap:VirtualizedContainerService.HintSize="450,496" sap2010:WorkflowViewState.IdRef="If_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <ui:LogMessage DisplayName="log_file_downloaded_info" sap:VirtualizedContainerService.HintSize="334,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;File downloaded: &quot;+ _boolNormalFlow.ToString]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+            </If.Then>
+            <If.Else>
+              <ui:LogMessage DisplayName="log_file_downloaded_warn" sap:VirtualizedContainerService.HintSize="334,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Fatal" Message="[&quot;File downloaded: &quot;+ _boolNormalFlow.ToString]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+            </If.Else>
+          </If>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,375.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_31">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage sap2010:Annotation.AnnotationText="" DisplayName="lm_not_report_found" sap:VirtualizedContainerService.HintSize="434,207.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Normal flow but there was no report for this month&quot;]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
+          <Assign sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[_boolNormalFlow]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:LogMessage DisplayName="log_wf_finished" sap:VirtualizedContainerService.HintSize="586,48" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[String.Format(&quot;--- Finished: {0} ---&quot;, jobInfo.WorkflowName)]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+  </Sequence>
+</Activity>
