@@ -104,7 +104,7 @@
       <AssemblyReference>NPOI.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;-  Description of the function of this workflow. Add specific details and business logic if it exists.&#xA;&#xA;*** META ***&#xA;Created on:    202X-0X-XX  ; sisua.developer&#xA;Modified on:  202X-0X-XX ; sisua.developer" DisplayName="process_row_template" sap:VirtualizedContainerService.HintSize="1446,2053.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;The Process Row acts as the central transaction controller, responsible for receiving and processing the final upload status through the boolUploadYearlyReport boolean flag. Once the upload workflow concludes, the Process Row evaluates this status using a conditional activity to determine the subsequent course of action for the current Worktray item.&#xA;&#xA;In the scenario where the boolean is True, the robot enters the success branch, logging a confirmation of the file upload. Immediately following this, the robot performs a critical update to data persistence: it assigns the string value &quot;TRUE&quot; to the &quot;uploaded_report&quot; column within the DataRow (_drowWt) representing the item in the Worktray. This action ensures that the record is permanently marked as successfully processed before moving forward.&#xA;&#xA;Conversely, if the boolean returns a False value, the flow diverts to the negative branch to handle the failure. At this point, the robot logs an error indicating the upload failed and proceeds to update the Worktray row with the relevant failure information. This management is essential, as it allows the main process to identify which items require a retry or manual review without losing traceability of what occurred during execution.&#xA;&#xA;*** META ***&#xA;Created on:    202X-0X-XX  ; sisua.developer&#xA;Modified on:  202X-0X-XX ; sisua.developer" DisplayName="process_row_template" sap:VirtualizedContainerService.HintSize="1446,2047.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:CurrentJobInfo" Name="jobInfo" />
       <Variable x:TypeArguments="x:String" Name="strUrlAcme" />
@@ -220,7 +220,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:MultipleAssign DisplayName="assign_wf_config_parameters" sap:VirtualizedContainerService.HintSize="546.6666666666666,210.66666666666666" sap2010:WorkflowViewState.IdRef="MultipleAssign_13">
+    <ui:MultipleAssign DisplayName="assign_wf_config_parameters" sap:VirtualizedContainerService.HintSize="546.6666666666666,210" sap2010:WorkflowViewState.IdRef="MultipleAssign_13">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
@@ -250,7 +250,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:MultipleAssign DisplayName="assign_row_parameters" sap:VirtualizedContainerService.HintSize="546.6666666666666,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_14">
+    <ui:MultipleAssign DisplayName="assign_row_parameters" sap:VirtualizedContainerService.HintSize="546.6666666666666,179.33333333333334" sap2010:WorkflowViewState.IdRef="MultipleAssign_14">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_19">
@@ -288,16 +288,16 @@
         <OutArgument x:TypeArguments="x:Boolean" x:Key="_boolUploadYearlyReport">[boolUploadYearlyReport]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If Condition="[boolUploadYearlyReport]" DisplayName="If_yearly_report_up_success" sap:VirtualizedContainerService.HintSize="546.6666666666666,986.6666666666666" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[boolUploadYearlyReport]" DisplayName="If_yearly_report_up_success" sap:VirtualizedContainerService.HintSize="546.6666666666666,982" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Sequence DisplayName="upload_success" sap:VirtualizedContainerService.HintSize="512.6666666666666,407.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence DisplayName="upload_success" sap:VirtualizedContainerService.HintSize="512.6666666666666,405.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="lm_success_upload_file_report" sap:VirtualizedContainerService.HintSize="478.6666666666667,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Error" Message="[&quot;Success upload report&quot;]" />
-          <ui:MultipleAssign sap2010:Annotation.AnnotationText="Only for row information/data (not worktray state)" DisplayName="assign_row_outcome" sap:VirtualizedContainerService.HintSize="478.6666666666667,170.66666666666666" sap2010:WorkflowViewState.IdRef="MultipleAssign_17">
+          <ui:LogMessage DisplayName="lm_success_upload_file_report" sap:VirtualizedContainerService.HintSize="478.6666666666667,175.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Error" Message="[&quot;Success upload report&quot;]" />
+          <ui:MultipleAssign sap2010:Annotation.AnnotationText="Only for row information/data (not worktray state)" DisplayName="assign_row_outcome" sap:VirtualizedContainerService.HintSize="478.6666666666667,170" sap2010:WorkflowViewState.IdRef="MultipleAssign_17">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_23">
@@ -319,14 +319,14 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512.6666666666666,407.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512.6666666666666,405.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="lm_failed_upload_file_report" sap:VirtualizedContainerService.HintSize="478.6666666666667,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Failed upload report&quot;]" />
-          <ui:MultipleAssign sap2010:Annotation.AnnotationText="Only for row information/data (not worktray state)" DisplayName="assign_row_outcome" sap:VirtualizedContainerService.HintSize="478.6666666666667,170.66666666666666" sap2010:WorkflowViewState.IdRef="MultipleAssign_18">
+          <ui:LogMessage DisplayName="lm_failed_upload_file_report" sap:VirtualizedContainerService.HintSize="478.6666666666667,175.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Failed upload report&quot;]" />
+          <ui:MultipleAssign sap2010:Annotation.AnnotationText="Only for row information/data (not worktray state)" DisplayName="assign_row_outcome" sap:VirtualizedContainerService.HintSize="478.6666666666667,170" sap2010:WorkflowViewState.IdRef="MultipleAssign_18">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_24">

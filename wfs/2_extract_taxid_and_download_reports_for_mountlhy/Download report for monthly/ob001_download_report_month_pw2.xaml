@@ -107,7 +107,7 @@
       <AssemblyReference>NPOI.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;-  Description of the function of this workflow. Add specific details and business logic if it exists.&#xA;&#xA;*** META ***&#xA;Created on:    202X-0X-XX  ; sisua.developer&#xA;Modified on:  202X-0X-XX ; sisua.developer" DisplayName="process_row_template" sap:VirtualizedContainerService.HintSize="1446,2348" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;This raw process is dedicated solely to downloading 2025's monthly reports. It manages a boolean status to verify if all reports for a given Work Item are present, allowing for flexible re-execution based on that state&#xA;&#xA;*** META ***&#xA;Created on:Dante Libiot" DisplayName="process_row_template" sap:VirtualizedContainerService.HintSize="1446,2340.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strTax" />
       <Variable x:TypeArguments="ui:CurrentJobInfo" Name="jobInfo" />
@@ -217,7 +217,7 @@
       </If.Else>
     </If>
     <ui:GetCurrentJobInfo DisplayName="get_current_job_info" sap:VirtualizedContainerService.HintSize="546.6666666666666,57.333333333333336" sap2010:WorkflowViewState.IdRef="GetCurrentJobInfo_1" Result="[jobInfo]" />
-    <ui:LogMessage DisplayName="log_starting_wf" sap:VirtualizedContainerService.HintSize="546.6666666666666,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[String.Format(&quot;--- Starting: {0} ---&quot;, jobInfo.WorkflowName)]">
+    <ui:LogMessage DisplayName="log_starting_wf" sap:VirtualizedContainerService.HintSize="546.6666666666666,175.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[String.Format(&quot;--- Starting: {0} ---&quot;, jobInfo.WorkflowName)]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -225,7 +225,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:MultipleAssign DisplayName="assign_row_parameters" sap:VirtualizedContainerService.HintSize="546.6666666666666,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_24">
+    <ui:MultipleAssign DisplayName="assign_row_parameters" sap:VirtualizedContainerService.HintSize="546.6666666666666,179.33333333333334" sap2010:WorkflowViewState.IdRef="MultipleAssign_24">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_28">
@@ -247,7 +247,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:MultipleAssign DisplayName="assign_wf_config_parameters" sap:VirtualizedContainerService.HintSize="546.6666666666666,241.33333333333334" sap2010:WorkflowViewState.IdRef="MultipleAssign_17">
+    <ui:MultipleAssign DisplayName="assign_wf_config_parameters" sap:VirtualizedContainerService.HintSize="546.6666666666666,240.66666666666666" sap2010:WorkflowViewState.IdRef="MultipleAssign_17">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
@@ -285,7 +285,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:LogMessage DisplayName="lm_show_current_wid" sap:VirtualizedContainerService.HintSize="546.6666666666666,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Mi Wid is : &quot; + strWid]" />
+    <ui:LogMessage DisplayName="lm_show_current_wid" sap:VirtualizedContainerService.HintSize="546.6666666666666,175.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Mi Wid is : &quot; + strWid]" />
     <Sequence DisplayName="Download_report_for_monthly" sap:VirtualizedContainerService.HintSize="546.6666666666666,437.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_8">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -308,24 +308,24 @@
           <InArgument x:TypeArguments="x:String" x:Key="_strTaxId">[strTax]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="_strUrlAcme">[strUrlAcme]</InArgument>
           <OutArgument x:TypeArguments="x:Boolean" x:Key="_boolAllReportMonthDonwloadSuccess">[boolDownloadReport]</OutArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="_intTimerMid">[intTimerMid]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="_intTimerMid">[intTimerMid]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
-    <If sap2010:Annotation.AnnotationText="if All reports were downloaded successfully" Condition="[boolDownloadReport]" DisplayName="If_download_reports" sap:VirtualizedContainerService.HintSize="546.6666666666666,664" sap2010:WorkflowViewState.IdRef="If_3">
+    <If sap2010:Annotation.AnnotationText="if All reports were downloaded successfully" Condition="[boolDownloadReport]" DisplayName="If_download_reports" sap:VirtualizedContainerService.HintSize="546.6666666666666,662" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Reports_downloaded_successfully" sap:VirtualizedContainerService.HintSize="512.6666666666666,230.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <Sequence DisplayName="Reports_downloaded_successfully" sap:VirtualizedContainerService.HintSize="512.6666666666666,230" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:MultipleAssign sap2010:Annotation.AnnotationText="Only for row information/data (not worktray state)" DisplayName="assign_row_outcome" sap:VirtualizedContainerService.HintSize="478.6666666666667,170.66666666666666" sap2010:WorkflowViewState.IdRef="MultipleAssign_22">
+          <ui:MultipleAssign sap2010:Annotation.AnnotationText="Only for row information/data (not worktray state)" DisplayName="assign_row_outcome" sap:VirtualizedContainerService.HintSize="478.6666666666667,170" sap2010:WorkflowViewState.IdRef="MultipleAssign_22">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_26">
@@ -347,13 +347,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512.6666666666666,230.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512.6666666666666,230" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:MultipleAssign sap2010:Annotation.AnnotationText="Only for row information/data (not worktray state)" DisplayName="not_all_reports_downloaded_correctly" sap:VirtualizedContainerService.HintSize="478.6666666666667,170.66666666666666" sap2010:WorkflowViewState.IdRef="MultipleAssign_23">
+          <ui:MultipleAssign sap2010:Annotation.AnnotationText="Only for row information/data (not worktray state)" DisplayName="not_all_reports_downloaded_correctly" sap:VirtualizedContainerService.HintSize="478.6666666666667,170" sap2010:WorkflowViewState.IdRef="MultipleAssign_23">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_27">
@@ -376,7 +376,7 @@
       </If.Else>
     </If>
     <ui:Comment DisplayName="comment_below_this_message" sap:VirtualizedContainerService.HintSize="546.6666666666666,88.66666666666667" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Code below this message" />
-    <ui:LogMessage DisplayName="log_wf_finished" sap:VirtualizedContainerService.HintSize="546.6666666666666,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[String.Format(&quot;--- Finished: {0} ---&quot;, jobInfo.WorkflowName)]">
+    <ui:LogMessage DisplayName="log_wf_finished" sap:VirtualizedContainerService.HintSize="546.6666666666666,166" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Error" Message="[String.Format(&quot;--- Finished: {0} ---&quot;, jobInfo.WorkflowName)]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>

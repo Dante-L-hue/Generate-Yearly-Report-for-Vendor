@@ -126,7 +126,7 @@
       <AssemblyReference>NPOI.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;-  Description of the function of this workflow. Add specific details and business logic if it exists.&#xA;&#xA;*** META ***&#xA;Created on:    202X-0X-XX  ; sisua.developer&#xA;Modified on:  202X-0X-XX ; sisua.developer" DisplayName="workflow_basic_template" sap:VirtualizedContainerService.HintSize="1232.6666666666667,2279.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;This workflow is responsible for opening the Edge browser and navigating to the “Work Items” section of the ACME application, using the URL defined in the framework configuration file.&#xA;&#xA;The flow validates that the browser is correctly opened and that the navigation successfully reaches the Work Items page.&#xA;On success, it prepares the context so that subsequent steps can extract the full Work Items table.&#xA;If the page does not load or the expected element does not appear within the configured timeout, the workflow logs the error and throws an exception, delegating error handling to the framework.&#xA;&#xA;*** META ***&#xA;Created on : Dante Libiot&#xD;&#xA;" DisplayName="workflow_basic_template" sap:VirtualizedContainerService.HintSize="1446,2279.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:CurrentJobInfo" Name="jobInfo" />
       <Variable x:TypeArguments="x:String" Name="strUrlAcme" />

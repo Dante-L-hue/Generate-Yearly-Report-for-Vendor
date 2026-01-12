@@ -126,7 +126,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;-  Description of the function of this workflow. Add specific details and business logic if it exists.&#xA;&#xA;*** META ***&#xA;Created on:    202X-0X-XX  ; sisua.developer&#xA;Modified on:  202X-0X-XX ; sisua.developer" DisplayName="workflow_basic_template" sap:VirtualizedContainerService.HintSize="1446.6666666666667,1567.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;This workflow is responsible for navigating to and validating access to the monthly report download page within the ACME portal.&#xA;&#xA;The flow opens the browser using the configured URL, validates that the monthly report page has loaded successfully by waiting for a specific UI element to appear, and logs an informational message upon success.&#xA;If the expected element does not appear within the configured timeout, the workflow throws an exception, indicating a navigation failure, allowing the framework to handle retries or error escalation accordingly.&#xA;&#xA;This workflow acts as a control checkpoint before starting the report download process, ensuring that execution continues only if navigation is successful.&#xA;&#xA;*** META ***&#xA;Created on:   Dante Libiot&#xA;" DisplayName="workflow_basic_template" sap:VirtualizedContainerService.HintSize="1446,1683.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:CurrentJobInfo" Name="jobInfo" />
     </Sequence.Variables>
@@ -197,27 +197,27 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="ua_open_edge_workitem_page" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="552,1246" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" IsIncognito="True" OpenMode="IfNotOpen" ScopeGuid="2a11a208-e026-4b43-8f4b-039456ab1411" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="ua_open_edge_workitem_page" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="552,1362" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" IsIncognito="True" OpenMode="IfNotOpen" ScopeGuid="2a11a208-e026-4b43-8f4b-039456ab1411" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="518,994.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="518,1111.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="lm_sucess_open_page" sap:VirtualizedContainerService.HintSize="484,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Trace" Message="[&quot;The open browser was detected correctly.&quot;]">
+            <ui:LogMessage DisplayName="lm_sucess_open_page" sap:VirtualizedContainerService.HintSize="484,178" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Trace" Message="[&quot;The open browser was detected correctly.&quot;]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:LogMessage>
-            <uix:NGoToUrl DisplayName="Go To URL - " sap:VirtualizedContainerService.HintSize="484,124" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" ScopeIdentifier="2a11a208-e026-4b43-8f4b-039456ab1411" Url="[_strUrlReportDownload]" Version="V5">
+            <uix:NGoToUrl DisplayName="navigate_to_report_page" sap:VirtualizedContainerService.HintSize="484,123.33333333333333" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" ScopeIdentifier="2a11a208-e026-4b43-8f4b-039456ab1411" Url="[_strUrlReportDownload]" Version="V5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -307,9 +307,9 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:CommentOut>
-            <uix:NCheckState DisplayName="check_report_download_page" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="484,693.3333333333334" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="2a11a208-e026-4b43-8f4b-039456ab1411" Timeout="[_intTimerLow]" Version="V4">
+            <uix:NCheckState DisplayName="check_report_download_page" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="484,690" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="2a11a208-e026-4b43-8f4b-039456ab1411" Timeout="[_intTimerLow]" Version="V4">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="ta_type_data" sap:VirtualizedContainerService.HintSize="450,230" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="ta_type_data" sap:VirtualizedContainerService.HintSize="450,228.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Int32" Default="1" Name="iterator" />
                     <Variable x:TypeArguments="s:String[]" Name="arrMonth" />
@@ -319,17 +319,17 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="lm_check_report_page_sucess" sap:VirtualizedContainerService.HintSize="416,170" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Success navigate to report month&quot;]" />
+                  <ui:LogMessage DisplayName="lm_check_report_page_sucess" sap:VirtualizedContainerService.HintSize="416,168.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Success navigate to report month&quot;]" />
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,174.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,174" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Throw Exception="[new Exception(&quot;failed to navigate to the report month page.&quot;)]" sap:VirtualizedContainerService.HintSize="416,114.66666666666667" sap2010:WorkflowViewState.IdRef="Throw_1">
+                  <Throw Exception="[new Exception(&quot;failed to navigate to the report month page.&quot;)]" sap:VirtualizedContainerService.HintSize="416,114" sap2010:WorkflowViewState.IdRef="Throw_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>

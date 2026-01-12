@@ -118,7 +118,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;-  Description of the function of this workflow. Add specific details and business logic if it exists.&#xA;&#xA;*** META ***&#xA;Created on:    202X-0X-XX  ; sisua.developer&#xA;Modified on:  202X-0X-XX ; sisua.developer" DisplayName="p001_main_state_wf_2.0" sap:VirtualizedContainerService.HintSize="1232.666666666667,5508.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;This is the main process for TaxID extraction and report downloading. It incorporates the necessary Login and Logout workflows from utils_process. The core logic, however, takes place in the two invoked process rows. Each is dedicated to a single task and manages a state check to track completion, ensuring that tasks are not redundant in the event of a retry.&#xA;&#xA;*** META ***&#xA;Created on:    202X-0X-XX  ; sisua.developer&#xA;Modified on:  202X-0X-XX ; sisua.developer" DisplayName="p001_main_state_wf_2.0" sap:VirtualizedContainerService.HintSize="1446,5513.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strWorktray" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtaWorktray" />
@@ -200,7 +200,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:MultipleAssign DisplayName="assign_wf_config_parameters" sap:VirtualizedContainerService.HintSize="687.3333333333334,148.66666666666666" sap2010:WorkflowViewState.IdRef="MultipleAssign_13">
+    <ui:MultipleAssign DisplayName="assign_wf_config_parameters" sap:VirtualizedContainerService.HintSize="687.3333333333334,149.33333333333334" sap2010:WorkflowViewState.IdRef="MultipleAssign_13">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
@@ -227,7 +227,7 @@
         </InArgument>
       </ui:ReadRange.Range>
     </ui:ReadRange>
-    <ui:MultipleAssign sap2010:Annotation.AnnotationText="intMaxRowTries: attempts for each row if a system exception occurs. Default: 2&#xA;intMaxRowsToProcess:  Default: -1 (all)&#xA;boolTakeScreenshotSysExc: Default False. True if row processing uses UI activities&#xA;boolTakeScreenshotBE: Default False. True if row processing uses UI activities&#xA;intRowsToProcess: Columns logic to process and/or skip rows" DisplayName="assign_wf_loop_parameters" sap:VirtualizedContainerService.HintSize="687.3333333333334,332.6666666666667" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="intMaxRowTries: attempts for each row if a system exception occurs. Default: 2&#xA;intMaxRowsToProcess:  Default: -1 (all)&#xA;boolTakeScreenshotSysExc: Default False. True if row processing uses UI activities&#xA;boolTakeScreenshotBE: Default False. True if row processing uses UI activities&#xA;intRowsToProcess: Columns logic to process and/or skip rows" DisplayName="assign_wf_loop_parameters" sap:VirtualizedContainerService.HintSize="687.3333333333334,336.6666666666667" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">

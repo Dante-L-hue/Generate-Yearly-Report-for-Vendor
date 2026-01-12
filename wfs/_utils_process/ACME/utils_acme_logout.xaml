@@ -119,15 +119,11 @@
       <AssemblyReference>NPOI.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;This workflow handles the logout and browser closure process.&#xA;&#xA;It first validates whether a logout action is available in the application UI. &#xA;If the logout option is present, the workflow performs a proper logout by interacting with the corresponding UI element.&#xA;&#xA;Regardless of the logout result, the workflow ensures that the Chrome browser is closed to guarantee a clean end of the session.&#xA;&#xA;*** META ***&#xA;Created on : Dante Libiot" DisplayName="workflow_basic_template" sap:VirtualizedContainerService.HintSize="1009.9999999999999,2062.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;This workflow handles the logout and browser closure process.&#xA;&#xA;It first validates whether a logout action is available in the application UI. &#xA;If the logout option is present, the workflow performs a proper logout by interacting with the corresponding UI element.&#xA;&#xA;Regardless of the logout result, the workflow ensures that the Chrome browser is closed to guarantee a clean end of the session.&#xA;&#xA;*** META ***&#xA;Created on : Dante Libiot" DisplayName="workflow_basic_template" sap:VirtualizedContainerService.HintSize="1446,2014.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:CurrentJobInfo" Name="jobInfo" />
       <Variable x:TypeArguments="x:String" Name="strUrlAcme" />
-      <Variable x:TypeArguments="x:Int32" Name="intTimerLow">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="intTimerLow" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -196,7 +192,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:MultipleAssign DisplayName="assign_wf_config_parameters" sap:VirtualizedContainerService.HintSize="552,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_16">
+    <ui:MultipleAssign DisplayName="assign_wf_config_parameters" sap:VirtualizedContainerService.HintSize="552,179.33333333333334" sap2010:WorkflowViewState.IdRef="MultipleAssign_16">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -224,29 +220,29 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="ua_logut_and_close_browser" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="552,1561.3333333333333" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" IsIncognito="True" OpenMode="Never" ScopeGuid="d47f6b8e-8fe0-485d-9167-22be481820af" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="ua_logut_and_close_browser" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="552,1514" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" IsIncognito="True" OpenMode="Never" ScopeGuid="d47f6b8e-8fe0-485d-9167-22be481820af" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="518,1270" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="518,1263.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="lm_open_browser" sap:VirtualizedContainerService.HintSize="484,179.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;browser open on the Acme page&quot;]" />
-            <uix:NCheckState DisplayName="check_if_can_logut" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="484,1028" sap2010:WorkflowViewState.IdRef="NCheckState_1" IsLoose="True" Timeout="[intTimerLow]" Version="V4">
+            <ui:LogMessage DisplayName="lm_open_browser" sap:VirtualizedContainerService.HintSize="484,178" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;browser open on the Acme page&quot;]" />
+            <uix:NCheckState DisplayName="check_if_can_logut" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="484,1022.6666666666666" sap2010:WorkflowViewState.IdRef="NCheckState_1" IsLoose="True" Timeout="[intTimerLow]" Version="V4">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="ta_logut" sap:VirtualizedContainerService.HintSize="450,459.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence DisplayName="ta_logut" sap:VirtualizedContainerService.HintSize="450,456.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,179.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Fatal" Message="[&quot;Exist button logut&quot;]" />
-                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="click_logout" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,220" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="d47f6b8e-8fe0-485d-9167-22be481820af" Version="V4">
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,178" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Trace" Message="[&quot;Exist button logut&quot;]" />
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="click_logout" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,218.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="SameAsCard" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="d47f6b8e-8fe0-485d-9167-22be481820af" Version="V4">
                     <uix:NClick.Target>
                       <uix:TargetAnchorable BrowserURL="acme-test.uipath.com/work-items" DesignTimeRectangle="1347, 129, 60, 38" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='Log Out' parentid='bs-example-navbar-collapse-1' tag='A' /&gt;" Guid="8d74a6dc-59c7-4c21-a5ad-42f4f42e8e75" InformativeScreenshot="a4f8381be55d6c07af3d82cf23044e72.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Work Items' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                     </uix:NClick.Target>
@@ -264,13 +260,13 @@
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="ta_close_chrome_directly" sap:VirtualizedContainerService.HintSize="450,280" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence DisplayName="ta_close_chrome_directly" sap:VirtualizedContainerService.HintSize="450,278.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="click_close_chrome" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,220" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="d47f6b8e-8fe0-485d-9167-22be481820af" Version="V5">
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="click_close_chrome" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,218.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="d47f6b8e-8fe0-485d-9167-22be481820af" Version="V5">
                     <uix:NClick.Target>
                       <uix:TargetAnchorable BrowserURL="acme-test.uipath.com/work-items/update/108483727" CVScreenId="f588f3b2-44e7-44d4-952b-2753151dc263" DesignTimeRectangle="1882, 8, 46, 40" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;ctrl name='ACME System 1 - Google Chrome (incógnito)' role='pane' /&gt;&lt;ctrl name='Cerrar' role='push button' /&gt;" FuzzySelectorArgument="&lt;ctrl name='ACME System 1 - Google Chrome (incógnito)' role='pane' matching:name='fuzzy' fuzzylevel:name='0.0' /&gt;&lt;ctrl name='Cerrar' role='push button' automationid='' matching:name='fuzzy' fuzzylevel:name='0.0' matching:automationid='fuzzy' fuzzylevel:automationid='0.0' check:text='Cerrar' /&gt;" Guid="613a1f4c-1bc0-46ab-ad9b-4a651fe2f67f" InformativeScreenshot="10021fa3c1e29688eadbb92a0665baea.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='ACME System 1 - Google Chrome' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
                         <uix:TargetAnchorable.Anchors>

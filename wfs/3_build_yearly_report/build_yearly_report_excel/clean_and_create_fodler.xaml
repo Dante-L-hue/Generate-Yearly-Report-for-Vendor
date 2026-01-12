@@ -79,7 +79,7 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;-  This workflow clean a folder completely.&#xA;-&#xA;*** META ***&#xA;Created by:    vicente.diaz - 2022-07-13&#xA;Modified by:  vicente.diaz - 2023-12-07" DisplayName="utils_clean_folder" sap:VirtualizedContainerService.HintSize="1153,2219" sap2010:WorkflowViewState.IdRef="Sequence_5">
+  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;-  This workflow clean a folder completely.&#xA;-This framework utility is essential for ensuring robust directory management. It automates the process of creating folders while avoiding management conflicts; it validates whether a folder exists and handles it accordingly to prevent errors. Specifically, the 'Clean and Create Folder' workflow is invoked within the Build_Yearly_DataTable_From_Monthly_Reports process.&quot;&#xA;*** META ***&#xA;Created:Dante Libitot" DisplayName="utils_clean_folder" sap:VirtualizedContainerService.HintSize="1446,2290.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_5">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="boolProcessDataExist" />
       <Variable x:TypeArguments="x:Boolean" Name="boolFolderExists" />
@@ -91,8 +91,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetCurrentJobInfo DisplayName="get_current_job_info" sap:VirtualizedContainerService.HintSize="486,57" sap2010:WorkflowViewState.IdRef="GetCurrentJobInfo_1" Result="[jobInfo]" />
-    <ui:LogMessage DisplayName="log_starting_wf" sap:VirtualizedContainerService.HintSize="486,57" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[String.Format(&quot;--- Starting: {0} ---&quot;, jobInfo.WorkflowName)]">
+    <ui:GetCurrentJobInfo DisplayName="get_current_job_info" sap:VirtualizedContainerService.HintSize="486,57.333333333333336" sap2010:WorkflowViewState.IdRef="GetCurrentJobInfo_1" Result="[jobInfo]" />
+    <ui:LogMessage DisplayName="log_starting_wf" sap:VirtualizedContainerService.HintSize="486,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[String.Format(&quot;--- Starting: {0} ---&quot;, jobInfo.WorkflowName)]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -100,7 +100,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:LogMessage DisplayName="log_folder_to_clean" sap:VirtualizedContainerService.HintSize="486,57" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[String.Format(&quot;Folder to clean: {0}&quot;, _strFolderToClean)]">
+    <ui:LogMessage DisplayName="log_folder_to_clean" sap:VirtualizedContainerService.HintSize="486,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[String.Format(&quot;Folder to clean: {0}&quot;, _strFolderToClean)]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -108,8 +108,8 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:PathExists Resource="{x:Null}" DisplayName="pe_folder_exists" Exists="[boolFolderExists]" sap:VirtualizedContainerService.HintSize="486,147" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[_strFolderToClean]" PathType="Folder" />
-    <ui:LogMessage DisplayName="log_folder_exists" sap:VirtualizedContainerService.HintSize="486,57" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[&quot;Folder exists: &quot; + boolFolderExists.ToString]">
+    <ui:PathExists Resource="{x:Null}" DisplayName="pe_folder_exists" Exists="[boolFolderExists]" sap:VirtualizedContainerService.HintSize="486,176" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[_strFolderToClean]" PathType="Folder" />
+    <ui:LogMessage DisplayName="log_folder_exists" sap:VirtualizedContainerService.HintSize="486,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[&quot;Folder exists: &quot; + boolFolderExists.ToString]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -117,7 +117,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <If Condition="[boolFolderExists]" DisplayName="if_folder_exist_delete" sap:VirtualizedContainerService.HintSize="486,600" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[boolFolderExists]" DisplayName="if_folder_exist_delete" sap:VirtualizedContainerService.HintSize="486,634.6666666666666" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,373" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>

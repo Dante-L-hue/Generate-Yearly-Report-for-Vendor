@@ -122,7 +122,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;-  Description of the function of this workflow. Add specific details and business logic if it exists.&#xA;&#xA;*** META ***&#xA;Created on:    202X-0X-XX  ; sisua.developer&#xA;Modified on:  202X-0X-XX ; sisua.developer" DisplayName="workflow_basic_template" sap:VirtualizedContainerService.HintSize="1446.6666666666667,2520" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;This workflow uses the configured URL (strUrlUploadReportYearly) to navigate directly to the file upload section. It includes a visual verification that logs a success message if the &quot;Upload Yearly Report&quot; page appears correctly or throws a system exception if the target is not detected.&#xA;&#xA;*** META ***&#xA;Created on : Dante Libiot" DisplayName="workflow_basic_template" sap:VirtualizedContainerService.HintSize="1446,2520" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:CurrentJobInfo" Name="jobInfo" />
       <Variable x:TypeArguments="x:String" Name="strUrlUploadYearlyPage" />

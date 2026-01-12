@@ -118,7 +118,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;-  Description of the function of this workflow. Add specific details and business logic if it exists.&#xA;&#xA;*** META ***&#xA;Created on:    202X-0X-XX  ; sisua.developer&#xA;Modified on:  202X-0X-XX ; sisua.developer" DisplayName="p001_main_state_wf_2.0" sap:VirtualizedContainerService.HintSize="1222.6666666666667,4768.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;The Main State functions as the intelligent engine of the process, orchestrating the execution of the two primary workflows through a &quot;check-before-act&quot; logic and ensuring data persistence within the Worktray.&#xA;&#xA;The core of this state lies in the constant evaluation of each item's progress. Before invoking the upload or status-change processes, the robot consults the value of the corresponding columns in the current DataRow, such as &quot;uploaded_report_status&quot;. This conditional validation allows the robot to skip tasks that were already completed successfully in previous attempts, executing the &quot;try_upload_file&quot; or &quot;try_change_status&quot; workflows if and only if their current status is not &quot;TRUE&quot;. This architecture is essential for efficient retry management, preventing unnecessary duplication of actions.&#xA;&#xA;Within each execution block, the robot utilizes internal booleans (such as _boolUploadYearlyReport or _boolChangeStatus) to determine the outcome of the UI interaction. If the operation is successful, the Process Row updates the specific cell of the DataRow with the text &quot;TRUE&quot;. Once the necessary validations and executions for the row are processed, the Main State invokes a Write/Update Worktray activity, which saves all updated DataRow information directly to the control file (Excel or database), ensuring that progress is permanently recorded.&#xA;&#xA;*** META ***&#xA;Creadted on:Dante Libiot" DisplayName="p001_main_state_wf_2.0" sap:VirtualizedContainerService.HintSize="1446,4746.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strWorktray" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtaWorktray" />
@@ -200,7 +200,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:MultipleAssign DisplayName="assign_wf_config_parameters" sap:VirtualizedContainerService.HintSize="687.3333333333334,149.33333333333334" sap2010:WorkflowViewState.IdRef="MultipleAssign_13">
+    <ui:MultipleAssign DisplayName="assign_wf_config_parameters" sap:VirtualizedContainerService.HintSize="687.3333333333334,148.66666666666666" sap2010:WorkflowViewState.IdRef="MultipleAssign_13">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
@@ -227,7 +227,7 @@
         </InArgument>
       </ui:ReadRange.Range>
     </ui:ReadRange>
-    <ui:MultipleAssign sap2010:Annotation.AnnotationText="intMaxRowTries: attempts for each row if a system exception occurs. Default: 2&#xA;intMaxRowsToProcess:  Default: -1 (all)&#xA;boolTakeScreenshotSysExc: Default False. True if row processing uses UI activities&#xA;boolTakeScreenshotBE: Default False. True if row processing uses UI activities&#xA;intRowsToProcess: Columns logic to process and/or skip rows" DisplayName="assign_wf_loop_parameters" sap:VirtualizedContainerService.HintSize="687.3333333333334,336.6666666666667" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="intMaxRowTries: attempts for each row if a system exception occurs. Default: 2&#xA;intMaxRowsToProcess:  Default: -1 (all)&#xA;boolTakeScreenshotSysExc: Default False. True if row processing uses UI activities&#xA;boolTakeScreenshotBE: Default False. True if row processing uses UI activities&#xA;intRowsToProcess: Columns logic to process and/or skip rows" DisplayName="assign_wf_loop_parameters" sap:VirtualizedContainerService.HintSize="687.3333333333334,332.6666666666667" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
@@ -270,7 +270,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <ui:MultipleAssign sap2010:Annotation.AnnotationText="strPreviousStateCol: worktray column of the previous state to filter only the rows valid to process &#xA;strCurrentSateCol: worktray column of the current state to filter already processed rows and to update the row status&#xA;listrowsWtToProcess: list of rows in the worktray to be processed &#xA;intRowsToProcess: count of the rows to process" DisplayName="assign_wf_filter_parameters" sap:VirtualizedContainerService.HintSize="687.3333333333334,353.3333333333333" sap2010:WorkflowViewState.IdRef="MultipleAssign_16">
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="strPreviousStateCol: worktray column of the previous state to filter only the rows valid to process &#xA;strCurrentSateCol: worktray column of the current state to filter already processed rows and to update the row status&#xA;listrowsWtToProcess: list of rows in the worktray to be processed &#xA;intRowsToProcess: count of the rows to process" DisplayName="assign_wf_filter_parameters" sap:VirtualizedContainerService.HintSize="687.3333333333334,348.6666666666667" sap2010:WorkflowViewState.IdRef="MultipleAssign_16">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_26">
@@ -324,13 +324,13 @@ If(strPreviousStateCol IsNot Nothing, row(strPreviousStateCol).ToString.ToUpper 
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="[intCurrentIdx]" DisplayName="fe_process_row" sap:VirtualizedContainerService.HintSize="687.3333333333334,3282.6666666666665" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[listrowsWtToProcess]">
+    <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="[intCurrentIdx]" DisplayName="fe_process_row" sap:VirtualizedContainerService.HintSize="687.3333333333334,3270" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[listrowsWtToProcess]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="fe_process_row" sap:VirtualizedContainerService.HintSize="653.3333333333334,3134.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_17">
+          <Sequence DisplayName="fe_process_row" sap:VirtualizedContainerService.HintSize="653.3333333333334,3122.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_17">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="strSuccess" />
               <Variable x:TypeArguments="x:String" Name="strObs" />
@@ -377,7 +377,7 @@ If(strPreviousStateCol IsNot Nothing, row(strPreviousStateCol).ToString.ToUpper 
                 </Sequence>
               </If.Else>
             </If>
-            <ui:MultipleAssign DisplayName="assign_row_info" sap:VirtualizedContainerService.HintSize="619.3333333333334,149.33333333333334" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
+            <ui:MultipleAssign DisplayName="assign_row_info" sap:VirtualizedContainerService.HintSize="619.3333333333334,148.66666666666666" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_34">
@@ -399,19 +399,19 @@ If(strPreviousStateCol IsNot Nothing, row(strPreviousStateCol).ToString.ToUpper 
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:LogMessage>
-            <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="fe_try_process_row" sap:VirtualizedContainerService.HintSize="619.3333333333334,2492" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[Enumerable.Range(1, intMaxRowTries)]">
+            <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="fe_try_process_row" sap:VirtualizedContainerService.HintSize="619.3333333333334,2481.3333333333335" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[Enumerable.Range(1, intMaxRowTries)]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:Int32">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Int32" Name="intTry" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="fe_try_process_row" sap:VirtualizedContainerService.HintSize="585.3333333333334,2344" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                  <Sequence DisplayName="fe_try_process_row" sap:VirtualizedContainerService.HintSize="585.3333333333334,2334" sap2010:WorkflowViewState.IdRef="Sequence_21">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <TryCatch DisplayName="tc_process_row" sap:VirtualizedContainerService.HintSize="551.3333333333334,2284" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                    <TryCatch DisplayName="tc_process_row" sap:VirtualizedContainerService.HintSize="551.3333333333334,2274" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -419,7 +419,7 @@ If(strPreviousStateCol IsNot Nothing, row(strPreviousStateCol).ToString.ToUpper 
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <TryCatch.Try>
-                        <Sequence sap2010:Annotation.AnnotationText="Invoke wf to process each row&#xA;It can be a sequence if it is simple code/logic&#xA;The for each can be removed if it is only logic (not UI activities)&#xA;The exceptions must be handled correctly using the corresponding Catch logic" DisplayName="try_process_row" sap:VirtualizedContainerService.HintSize="512.6666666666666,1998.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                        <Sequence sap2010:Annotation.AnnotationText="Invoke wf to process each row&#xA;It can be a sequence if it is simple code/logic&#xA;The for each can be removed if it is only logic (not UI activities)&#xA;The exceptions must be handled correctly using the corresponding Catch logic" DisplayName="try_process_row" sap:VirtualizedContainerService.HintSize="512.6666666666666,1992.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_26">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -432,7 +432,7 @@ If(strPreviousStateCol IsNot Nothing, row(strPreviousStateCol).ToString.ToUpper 
                               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="_dicConfig">[_dicConfig]</InArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                           </ui:InvokeWorkflowFile>
-                          <If Condition="[row(&quot;uploaded_report_status&quot;).ToString = &quot;TRUE&quot;]" DisplayName="If_sucess_upload_report_file" sap:VirtualizedContainerService.HintSize="478.6666666666667,490.6666666666667" sap2010:WorkflowViewState.IdRef="If_5">
+                          <If Condition="[row(&quot;uploaded_report_status&quot;).ToString = &quot;TRUE&quot;]" DisplayName="If_sucess_upload_report_file" sap:VirtualizedContainerService.HintSize="478.6666666666667,489.3333333333333" sap2010:WorkflowViewState.IdRef="If_5">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -440,7 +440,7 @@ If(strPreviousStateCol IsNot Nothing, row(strPreviousStateCol).ToString.ToUpper 
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <If.Then>
-                              <Sequence DisplayName="continue_with_wf" sap:VirtualizedContainerService.HintSize="416,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                              <Sequence DisplayName="continue_with_wf" sap:VirtualizedContainerService.HintSize="416,90" sap2010:WorkflowViewState.IdRef="Sequence_29">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -465,7 +465,7 @@ If(strPreviousStateCol IsNot Nothing, row(strPreviousStateCol).ToString.ToUpper 
                             </If.Else>
                           </If>
                           <ui:WriteRange WorkbookPathResource="{x:Null}" DataTable="[dtaWorktray]" DisplayName="write/update_worktray" sap:VirtualizedContainerService.HintSize="478.6666666666667,148" sap2010:WorkflowViewState.IdRef="WriteRange_3" SheetName="base" StartingCell="A1" WorkbookPath="[strWorktray]" />
-                          <If Condition="[row(&quot;updated_status&quot;).ToString = &quot;TRUE&quot;]" DisplayName="If_sucess_change_status_workItem" sap:VirtualizedContainerService.HintSize="478.6666666666667,490.6666666666667" sap2010:WorkflowViewState.IdRef="If_6">
+                          <If Condition="[row(&quot;updated_status&quot;).ToString = &quot;TRUE&quot;]" DisplayName="If_sucess_change_status_workItem" sap:VirtualizedContainerService.HintSize="478.6666666666667,489.3333333333333" sap2010:WorkflowViewState.IdRef="If_6">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -473,7 +473,7 @@ If(strPreviousStateCol IsNot Nothing, row(strPreviousStateCol).ToString.ToUpper 
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <If.Then>
-                              <Sequence DisplayName="continue_with_wf" sap:VirtualizedContainerService.HintSize="416,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                              <Sequence DisplayName="continue_with_wf" sap:VirtualizedContainerService.HintSize="416,90" sap2010:WorkflowViewState.IdRef="Sequence_31">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -503,7 +503,7 @@ If(strPreviousStateCol IsNot Nothing, row(strPreviousStateCol).ToString.ToUpper 
                               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="_dicConfig">[_dicConfig]</InArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                           </ui:InvokeWorkflowFile>
-                          <ui:MultipleAssign DisplayName="assign_success_row_outcome" sap:VirtualizedContainerService.HintSize="478.6666666666667,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_17">
+                          <ui:MultipleAssign DisplayName="assign_success_row_outcome" sap:VirtualizedContainerService.HintSize="478.6666666666667,179.33333333333334" sap2010:WorkflowViewState.IdRef="MultipleAssign_17">
                             <ui:MultipleAssign.AssignOperations>
                               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_28">
@@ -531,7 +531,7 @@ If(strPreviousStateCol IsNot Nothing, row(strPreviousStateCol).ToString.ToUpper 
                         </Sequence>
                       </TryCatch.Try>
                       <TryCatch.Catches>
-                        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="517.3333333333334,23.333333333333332" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+                        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="517.3333333333334,22.666666666666668" sap2010:WorkflowViewState.IdRef="Catch`1_4">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -542,7 +542,7 @@ If(strPreviousStateCol IsNot Nothing, row(strPreviousStateCol).ToString.ToUpper 
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                             </ActivityAction.Argument>
-                            <Sequence DisplayName="log_sys_exception" sap:VirtualizedContainerService.HintSize="512.6666666666666,391.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                            <Sequence DisplayName="log_sys_exception" sap:VirtualizedContainerService.HintSize="512.6666666666666,376" sap2010:WorkflowViewState.IdRef="Sequence_25">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -598,7 +598,7 @@ If(strPreviousStateCol IsNot Nothing, row(strPreviousStateCol).ToString.ToUpper 
                             </Sequence>
                           </ActivityAction>
                         </Catch>
-                        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="517.3333333333334,23.333333333333332" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+                        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="517.3333333333334,22.666666666666668" sap2010:WorkflowViewState.IdRef="Catch`1_5">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -609,7 +609,7 @@ If(strPreviousStateCol IsNot Nothing, row(strPreviousStateCol).ToString.ToUpper 
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
                             </ActivityAction.Argument>
-                            <Sequence DisplayName="log_business_exception" sap:VirtualizedContainerService.HintSize="512.6666666666666,595.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                            <Sequence DisplayName="log_business_exception" sap:VirtualizedContainerService.HintSize="512.6666666666666,553.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_27">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -681,7 +681,7 @@ If(strPreviousStateCol IsNot Nothing, row(strPreviousStateCol).ToString.ToUpper 
                 </ActivityAction>
               </ui:ForEach.Body>
             </ui:ForEach>
-            <ui:MultipleAssign DisplayName="assign_row_outcome" sap:VirtualizedContainerService.HintSize="619.3333333333334,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+            <ui:MultipleAssign DisplayName="assign_row_outcome" sap:VirtualizedContainerService.HintSize="619.3333333333334,179.33333333333334" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">

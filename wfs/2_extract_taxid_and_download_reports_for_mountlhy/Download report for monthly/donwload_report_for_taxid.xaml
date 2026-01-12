@@ -132,7 +132,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;boolCanDownloadFile indicates whether a file exists and should be downloaded. If it’s True, the workflow runs the normal download and save steps. boolNormalFlow controls continuation: it is True when the file was downloaded/saved successfully or when no file exists (so the process can continue normally), and False when a file was expected but the download/save failed.&#xA;&#xA;*** META ***&#xA;creeated on: Dante Libiot&#xA;&#xA;Created on:    202X-0X-XX  ; sisua.developer&#xA;Modified on:  202X-0X-XX ; sisua.developer" DisplayName="workflow_basic_template" sap:VirtualizedContainerService.HintSize="1446,4355.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;boolCanDownloadFile indicates whether a file exists and should be downloaded. If it’s True, the workflow runs the normal download and save steps. boolNormalFlow controls continuation: it is True when the file was downloaded/saved successfully or when no file exists (so the process can continue normally), and False when a file was expected but the download/save failed.&#xA;&#xA;*** META ***&#xA;creeated on: Dante Libiot&#xA;" DisplayName="workflow_basic_template" sap:VirtualizedContainerService.HintSize="1446,4386" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:CurrentJobInfo" Name="jobInfo" />
       <Variable x:TypeArguments="x:String" Name="strProcessYearly" />
@@ -487,14 +487,14 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </Assign>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="inv_utils_chrome_save_file_as" sap:VirtualizedContainerService.HintSize="502,236" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="wfs\2_extract_taxid_and_download_reports_for_mountlhy\Download report for monthly\utils_chrome_save_file_as.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="inv_utils_chrome_save_file_as" sap:VirtualizedContainerService.HintSize="334,145.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="wfs\2_extract_taxid_and_download_reports_for_mountlhy\Download report for monthly\utils_chrome_save_file_as.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="x:String" x:Key="_strFilePath">[strFilePath]</InArgument>
                           <InArgument x:TypeArguments="x:Int32" x:Key="_intWaitingSeconds">[_intTimerLow]</InArgument>
                           <InArgument x:TypeArguments="x:Int32" x:Key="_intTimerLower">[_intTimerLow]</InArgument>
                           <InArgument x:TypeArguments="x:String" x:Key="_strAcmePage">[_strUrlAcme]</InArgument>
                           <OutArgument x:TypeArguments="x:Boolean" x:Key="_boolNormalFlow">[_boolAllReportMonthDonwloadSuccess]</OutArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="_intTimerMid">[_intTimerMid]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="_intTimerMid" />
                         </ui:InvokeWorkflowFile.Arguments>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">

@@ -151,7 +151,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION *** (Open Description!)&#xA;This workflow is responsible for handling the download and storage of the monthly report file.&#xA;&#xA;The flow first validates whether the monthly report is available by checking the presence of the required UI elements and system conditions. If the report is not available, the workflow sets a control flag (boolCanContinue = False) and safely stops the execution, avoiding unnecessary actions such as file creation or download validation.&#xA;&#xA;When the report is available, the workflow proceeds to:&#xA;&#xA;Open the browser “Save As” dialog.&#xA;&#xA;Define and validate the target file path.&#xA;&#xA;Ensure the parent directory exists (creating it if necessary).&#xA;&#xA;Save the report file to the defined location.&#xA;&#xA;Actively wait and verify that the file has been successfully downloaded.&#xA;&#xA;This approach ensures controlled execution, avoids invalid file operations, and maintains consistency with framework best practices by separating validation logic from execution logic.&#xA;&#xA;*** META ***&#xA;Created on :    Dante Libiot" DisplayName="chrome_save_file_as" sap:VirtualizedContainerService.HintSize="1446,4890.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_12">
+  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION *** (Open Description!)&#xA;This workflow is responsible for handling the download and storage of the monthly report file.&#xA;&#xA;The flow first validates whether the monthly report is available by checking the presence of the required UI elements and system conditions. If the report is not available, the workflow sets a control flag (boolCanContinue = False) and safely stops the execution, avoiding unnecessary actions such as file creation or download validation.&#xA;&#xA;When the report is available, the workflow proceeds to:&#xA;&#xA;Open the browser “Save As” dialog.&#xA;&#xA;Define and validate the target file path.&#xA;&#xA;Ensure the parent directory exists (creating it if necessary).&#xA;&#xA;Save the report file to the defined location.&#xA;&#xA;Actively wait and verify that the file has been successfully downloaded.&#xA;&#xA;This approach ensures controlled execution, avoids invalid file operations, and maintains consistency with framework best practices by separating validation logic from execution logic.&#xA;&#xA;*** META ***&#xA;Created on :    Dante Libiot" DisplayName="chrome_save_file_as" sap:VirtualizedContainerService.HintSize="1222.6666666666667,4890.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_12">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:CurrentJobInfo" Name="jobInfo" />
       <Variable x:TypeArguments="x:Boolean" Default="True" Name="BoolCanContinue" />
@@ -228,7 +228,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <uix:NCheckState DisplayName="check_app_state_save_as_window_open" EnableIfExists="False" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="586,1706.6666666666667" sap2010:WorkflowViewState.IdRef="NCheckState_2" Timeout="[)_intTimerMid]" Version="V4">
+    <uix:NCheckState DisplayName="check_app_state_save_as_window_open" EnableIfExists="False" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="586,1706.6666666666667" sap2010:WorkflowViewState.IdRef="NCheckState_2" Timeout="10" Version="V4">
       <uix:NCheckState.IfExists>
         <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_24">
           <sap:WorkflowViewStateService.ViewState>
@@ -261,7 +261,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <uix:NCheckState DisplayName="check_no_monthly_report_window" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="518,1044.6666666666667" sap2010:WorkflowViewState.IdRef="NCheckState_3" Timeout="[_intTimerMid]" Version="V5">
+          <uix:NCheckState DisplayName="check_no_monthly_report_window" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="518,1044.6666666666667" sap2010:WorkflowViewState.IdRef="NCheckState_3" Timeout="10" Version="V5">
             <uix:NCheckState.IfExists>
               <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="484,587.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_27">
                 <sap:WorkflowViewStateService.ViewState>

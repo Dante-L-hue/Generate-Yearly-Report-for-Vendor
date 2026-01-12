@@ -107,7 +107,7 @@
       <AssemblyReference>NPOI.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;-  Description of the function of this workflow. Add specific details and business logic if it exists.&#xA;&#xA;*** META ***&#xA;Created on:    202X-0X-XX  ; sisua.developer&#xA;Modified on:  202X-0X-XX ; sisua.developer" DisplayName="process_row_template" sap:VirtualizedContainerService.HintSize="1009.9999999999999,2551.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;This process row is exclusively responsible for TaxID extraction. It features a boolean flag to track whether the TaxID was successfully retrieved; furthermore, the result is logged in the Worktray that was previously passed by reference.&#xA;&#xA;*** META ***&#xA;Created on:    202X-0X-XX  ; sisua.developer&#xA;Modified on:  202X-0X-XX ; sisua.developer" DisplayName="process_row_template" sap:VirtualizedContainerService.HintSize="1446,2551.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strTax" />
       <Variable x:TypeArguments="ui:CurrentJobInfo" Name="jobInfo" />

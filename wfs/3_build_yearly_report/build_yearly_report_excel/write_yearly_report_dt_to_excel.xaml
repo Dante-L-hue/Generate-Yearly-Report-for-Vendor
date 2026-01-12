@@ -140,7 +140,7 @@
       <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;-  Description of the function of this workflow. Add specific details and business logic if it exists.&#xA;&#xA;*** META ***&#xA;Created on:    202X-0X-XX  ; sisua.developer&#xA;Modified on:  202X-0X-XX ; sisua.developer" DisplayName="workflow_basic_template" sap:VirtualizedContainerService.HintSize="1232.6666666666667,1212" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="*** DESCRIPTION ***&#xA;Finally, the 'Write Yearly Report DT Excel' workflow exports the previously created DataTable into an Excel file. It verifies whether the file was successfully generated; if so, it uses a boolean flag to authorize updating the file path in the Worktray.&#xA;&#xA;*** META ***&#xA;Creadte on : Dante Libiot" DisplayName="workflow_basic_template" sap:VirtualizedContainerService.HintSize="1446,1212" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:CurrentJobInfo" Name="jobInfo" />
       <Variable x:TypeArguments="x:Boolean" Name="boolExistYearlyFile" />
